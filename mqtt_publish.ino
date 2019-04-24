@@ -5,7 +5,7 @@
  *  github: https://github.com/asksensors
  */
  
-
+#include <WiFi.h>
 #include <PubSubClient.h>
 
 // AskSensors MQTT user config
