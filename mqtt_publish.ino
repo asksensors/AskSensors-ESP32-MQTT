@@ -8,12 +8,13 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-// AskSensors MQTT user config
-
+//TODO: ESP32 MQTT user config
 const char* ssid = ".................."; // Wifi SSID
 const char* password = ".................."; // Wifi Password
 const char* pubTopic = "publish/.................."; // API KEY IN
-const char* mqtt_server = "asksensors.com";
+const unsigned int writeInterval = 25000;   // write interval (in ms)
+//AskSensors MQTT config
+const char* mqtt_server = "mqtt.asksensors.com";
 unsigned int mqtt_port = 1883;
 
 WiFiClient askClient;
@@ -48,7 +49,7 @@ void loop() {
   client.loop();
   Serial.println("********** Publish MQTT data to ASKSENSORS");
   char mqtt_payload[30] = "";
-  snprintf (mqtt_payload, 30, "module1=%ld", random(10,100));
+  snprintf (mqtt_payload, 30, "module1=%ld&module2=%ld", random(10,100), random(10,100));
   Serial.print("Publish message: ");
   Serial.println(mqtt_payload);
   client.publish(pubTopic, mqtt_payload);
@@ -56,7 +57,7 @@ void loop() {
   Serial.println("********** End ");
   Serial.println("*****************************************************");
   
- delay(25000);// delay
+ delay(writeInterval);// delay
 }
 
 
