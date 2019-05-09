@@ -11,7 +11,8 @@
 //TODO: ESP32 MQTT user config
 const char* ssid = ".................."; // Wifi SSID
 const char* password = ".................."; // Wifi Password
-const char* pubTopic = "publish/.................."; // API KEY IN
+const char* username = "................."; // my AskSensors username
+const char* pubTopic = "................../.................."; // username/apiKeyIn
 const unsigned int writeInterval = 25000;   // write interval (in ms)
 //AskSensors MQTT config
 const char* mqtt_server = "mqtt.asksensors.com";
@@ -75,11 +76,8 @@ void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
     Serial.print("********** Attempting MQTT connection...");
-    // Create a random client ID
-    String clientId = "ESP32Client-";
-    clientId += String(random(0xffff), HEX);
     // Attempt to connect
-    if (client.connect(clientId.c_str())) {
+    if (client.connect("ESP32Client", username, "")) {  
       Serial.println("-> MQTT client connected");
     } else {
       Serial.print("failed, rc=");
