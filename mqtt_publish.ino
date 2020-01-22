@@ -12,7 +12,7 @@
 const char* ssid = ".................."; // Wifi SSID
 const char* password = ".................."; // Wifi Password
 const char* username = "................."; // my AskSensors username
-const char* pubTopic = "................../.................."; // username/apiKeyIn
+const char* pubTopic = "publish/..../....."; // publish/username/apiKeyIn
 const unsigned int writeInterval = 25000;   // write interval (in ms)
 //AskSensors MQTT config
 const char* mqtt_server = "mqtt.asksensors.com";
